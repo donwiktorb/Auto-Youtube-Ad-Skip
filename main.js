@@ -64,6 +64,23 @@
                 if (func2)
                     func2(t)
             }
+
+            do {
+                await new Promise(r => setTimeout(r, 200));
+                console.log('waiting for player state change')
+
+            } while(getFullFunctionName('ytPlayeronStateChangeplayer') == false)
+
+            let stateName = getFullFunctionName('ytPlayeronStateChangeplayer')
+
+            let func4 = window[stateName]
+
+            window[stateName] = (s) => {
+                if (s === 0 || s === -1)
+                    window.currentVideoTime = 0
+                if (func4)
+                    func4(t)
+            }
             
         } catch(e) {
             console.log(e)
