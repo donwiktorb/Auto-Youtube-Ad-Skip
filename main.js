@@ -79,7 +79,7 @@
                 if (s === 0 || s === -1)
                     window.currentVideoTime = 0
                 if (func4)
-                    func4(t)
+                    func4(s)
             }
             
         } catch(e) {
