@@ -79,7 +79,7 @@
 
             window[stateName] = (s) => {
                 console.log("PLAYER STATE CHANGE ", s)
-                if (s === 0 || s === -1)
+                if (s === 2) // 0
                     window.currentVideoTime = 0
                 if (func4)
                     func4(s)
