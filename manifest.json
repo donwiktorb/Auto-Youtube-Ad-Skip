@@ -1,6 +1,6 @@
 {
 
-    "manifest_version": 3,
+    "manifest_version": 2,
     "name": "dwb_yt_ad_skip",
     "version": "1.75",
   
@@ -18,14 +18,7 @@
     ],
 
     "web_accessible_resources": [
-        {
-            "resources": [
-                "main.js"
-            ],
-            "matches": [
-                "*://*youtube.com/*"
-            ]
-        }
+        "main.js"
     ]
   
 }

@@ -32,6 +32,7 @@
             window.currentVideoTime = 0
 
             window[name] = async (s) => {
+                console.log("AD STATE CHANGE", s)
                 let videoElem = document.getElementById('movie_player')
 
                 if (s === -1 || s == 1) {
@@ -58,6 +59,7 @@
 
             window[progressName] = (t) => {
                 if (t > 5) {
+                    console.log("TIME UPDATE", t)
                     window.currentVideoTime = t
                 }
 
@@ -76,6 +78,7 @@
             let func4 = window[stateName]
 
             window[stateName] = (s) => {
+                console.log("PLAYER STATE CHANGE ", s)
                 if (s === 0 || s === -1)
                     window.currentVideoTime = 0
                 if (func4)
