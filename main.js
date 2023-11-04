@@ -56,7 +56,6 @@
                     do {
                         await new Promise(r => setTimeout(r, 200));
                         videoElem.seekTo(window.currentVideoTime)
-
                     } while(videoElem.getCurrentTime() !== window.currentVideoTime)
 
                 } else {
