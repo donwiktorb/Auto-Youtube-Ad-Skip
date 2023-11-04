@@ -31,25 +31,33 @@
 
             window.currentVideoTime = 0
             window.showingAd = false
-            window.lastUrl = ""
+            window.lastUrl = false
 
             window[name] = async (s) => {
                 console.log("AD STATE CHANGE", s)
                 let videoElem = document.getElementById('movie_player')
 
                 if (s === -1 || s == 1) {
+                    let skipElem = document.getElementsByClassName("ytp-ad-skip-button-container")
+                    if (skipElem && skipElem[0])
+                        return skipElem[0]?.click()
+
                     window.showingAd = true
                     videoElem.stopVideo()
-                    if (window.lastUrl === videoElem.getVideoUrl()) {
-                        do {
-                            await new Promise(r => setTimeout(r, 200));
-                            videoElem.seekTo(window.currentVideoTime)
 
-                        } while(videoElem.getCurrentTime() !== window.currentVideoTime)
+                    if (window.lastUrl) {
+                        if (window.lastUrl !== videoElem.getVideoUrl()) {
+                            window.lastUrl = videoElem.getVideoUrl()
+                            window.currentVideoTime = 0
+                        }
                     } else {
                         window.lastUrl = videoElem.getVideoUrl()
-                        window.currentVideoTime = 0
                     }
+                    do {
+                        await new Promise(r => setTimeout(r, 200));
+                        videoElem.seekTo(window.currentVideoTime)
+
+                    } while(videoElem.getCurrentTime() !== window.currentVideoTime)
 
                 } else {
                     window.showingAd = false
@@ -76,23 +84,30 @@
                     func2(t)
             }
 
-            // do {
-            //     await new Promise(r => setTimeout(r, 200));
-            //     console.log('waiting for player state change')
+            do {
+                await new Promise(r => setTimeout(r, 200));
+                console.log('waiting for player state change')
 
-            // } while(getFullFunctionName('ytPlayeronStateChangeplayer') == false)
+            } while(getFullFunctionName('ytPlayeronStateChangeplayer') == false)
 
-            // let stateName = getFullFunctionName('ytPlayeronStateChangeplayer')
+            let stateName = getFullFunctionName('ytPlayeronStateChangeplayer')
 
-            // let func4 = window[stateName]
+            let func4 = window[stateName]
 
-            // window[stateName] = (s) => {
-            //     console.log("PLAYER STATE CHANGE ", s)
-            //     // if (s === 2) // 0
-            //     //     window.currentVideoTime = 0
-            //     if (func4)
-            //         func4(s)
-            // }
+            window[stateName] = (s) => {
+                console.log("PLAYER STATE CHANGE ", s)
+                // if (s === 2) // 0
+                //     window.currentVideoTime = 0
+                // if (s === 1) {
+                //     let videoElem = document.getElementById('movie_player')
+                //     if (window.lastUrl !== videoElem.getVideoUrl()) {
+                //         window.lastUrl = videoElem.getVideoUrl()
+                //         window.currentVideoTime = 0
+                //     }
+                // }
+                if (func4)
+                    func4(s)
+            }
             
         } catch(e) {
             console.log(e)
