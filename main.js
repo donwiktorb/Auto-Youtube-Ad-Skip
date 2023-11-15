@@ -34,6 +34,15 @@
                 elem.click()
                 console.log('skipped')
             })
+            initObserve('.ytp-ad-preview-container', (elem) => {
+                let btnElem = document.querySelector('.ytp-ad-skip-button-container')
+                if (!btnElem) {
+                    let videoElem = document.getElementsByTagName('video')
+                    if (videoElem) videoElem = videoElem[0]
+                    videoElem?.fastSeek(videoElem.duration)
+                    console.log('skipped')
+                }
+            })
             console.log("SET")
         } catch(e) {
             console.log("Error ", e)
