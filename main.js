@@ -34,7 +34,7 @@
       elem.click();
       console.log("skipped");
     });
-    initObserve(" ytp-ad-player-overlay-layout ", (elem) => {
+    initObserve(".ytp-ad-player-overlay-layout", (elem) => {
       let btnElem = document.querySelector(".ytp-ad-skip-button-container");
       if (!btnElem) {
         let videoElem = document.getElementsByTagName("video");
@@ -48,4 +48,3 @@
     console.log("Error ", e);
   }
 })();
-

@@ -1,24 +1,20 @@
 {
+  "manifest_version": 2,
+  "name": "dwb_yt_ad_skip",
+  "version": "3.45",
 
-    "manifest_version": 2,
-    "name": "dwb_yt_ad_skip",
-    "version": "3.3",
-  
-    "description": "Auto ad skip youtube shorts like tiktok",
-  
-    "icons": {
-      "48": "icons/dwb.png"
-    },
+  "description": "Auto ad skip youtube shorts like tiktok",
 
-    "content_scripts": [
-      {
-        "matches": ["*://*.youtube.com/*"],
-        "js": ["init.js"]
-      }
-    ],
+  "icons": {
+    "48": "icons/dwb.png"
+  },
 
-    "web_accessible_resources": [
-        "main.js"
-    ]
-  
+  "content_scripts": [
+    {
+      "matches": ["*://*.youtube.com/*"],
+      "js": ["init.js"]
+    }
+  ],
+
+  "web_accessible_resources": ["main.js"]
 }
