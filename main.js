@@ -39,8 +39,10 @@
       if (!btnElem) {
         let videoElem = document.getElementsByTagName("video");
         if (videoElem) videoElem = videoElem[0];
-        videoElem?.fastSeek(videoElem.duration ?? 4444);
-        console.log("skipped");
+        setTimeout(() => {
+          videoElem?.fastSeek(videoElem.duration ?? 4444);
+          console.log("skipped");
+        }, 500);
       }
     });
     console.log("SET");
