@@ -31,8 +31,10 @@
 
   try {
     initObserve(".ytp-ad-skip-button-container", (elem) => {
-      elem.click();
-      console.log("skipped");
+        setTimeout(() => {
+      		elem.click();
+          console.log("skipped");
+        }, 500);
     });
     initObserve(".ytp-ad-player-overlay-layout", (elem) => {
       let btnElem = document.querySelector(".ytp-ad-skip-button-container");
